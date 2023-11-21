@@ -4,8 +4,8 @@ import ContactItemBody from "./ContactItemBody";
 
 function ContactItem({ imageUrl, name, profession }) {
   return (
-    <div className="contact-item">
-      <ContactItemImage imageUrl={imageUrl} />
+    <div className="contact-item rounded-md border border-dashed  border-black  flex items-center p-5 mt-5 ">
+      <ContactItemImage imageUrl={imageUrl}  />
       <ContactItemBody name={name} profession={profession} />
     </div>
   );
