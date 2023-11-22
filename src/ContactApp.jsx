@@ -2,15 +2,31 @@ import React from "react";
 import { getData } from "./data";
 import ContactList from "./ContactList";
 
+class ContactApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contacts: getData(),
+    };
 
-function ContactApp() {
-  const contacts = getData();
-  return (
-    <div className="contact-app  ml-[300px] mr-[300px] pt-5 ">
-      <h1 className=" text-black font-normal font-[Inter] text-5xl px-3 py-3" >Daftar Kontak</h1>
-      <ContactList contacts={contacts} />
-    </div>
-  );
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
+  }
+  onDeleteHandler(id) {
+    const contacts = this.state.contacts.filter((contact) => contact.id !== id);
+    this.setState({ contacts });
+  }
+
+  render() {
+    return (
+      <div className="contact-app">
+        <h1>Daftar Kontak h1</h1>
+        <ContactList
+          contacts={this.state.contacts}
+          onDelete={this.onDeleteHandler}
+        />
+      </div>
+    );
+  }
 }
 
 export default ContactApp;
